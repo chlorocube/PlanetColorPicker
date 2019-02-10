@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PlanetColorPicker</string>
+    <string name="menu_title_github">github</string>
+    <string name="url_github">https://github.com/chlorocube/PlanetColorPicker</string>
+</resources>

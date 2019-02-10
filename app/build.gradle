@@ -1,0 +1,43 @@
+import java.text.SimpleDateFormat
+
+apply plugin: 'com.android.application'
+
+def date = new Date()
+def VERSION_CODE = Integer.parseInt(new SimpleDateFormat("yyyyMMddHHmm").format(date).substring(2))
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
+    defaultConfig {
+        applicationId "jp.co.chlorocube.planetcolorpickersample"
+        minSdkVersion 17
+        targetSdkVersion 28
+        versionCode VERSION_CODE
+        versionName "1.0.0"
+    }
+    buildTypes {
+        release {
+            debuggable false
+            zipAlignEnabled true
+            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    applicationVariants.all { variant ->
+        if (variant.buildType.name == "release") {
+            variant.outputs.all {
+                def versionName = variant.versionName
+                def versionCode = variant.versionCode
+                def newName = "PlanetColorPicker_v${versionName}_${versionCode}.apk"
+                outputFileName = newName
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation project(":planetcolorpicker")
+}
