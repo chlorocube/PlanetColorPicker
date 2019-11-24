@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-public class MainPreferenceManager {
+class MainPreferenceManager {
 
     private static final String KEY_HUE = "HUE";
     private static final String KEY_SATURATION = "SATURATION";

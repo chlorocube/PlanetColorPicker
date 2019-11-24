@@ -12,7 +12,7 @@ public class ColorPickerUtils {
     }
 
     public static float getHue(int color) {
-        float hsv[] = new float[3];
+        float[] hsv = new float[3];
         Color.colorToHSV(color, hsv);
         return hsv[0];
     }
@@ -58,7 +58,7 @@ public class ColorPickerUtils {
         }
     }
 
-    public static int interpretColor(int colors[], float unit) {
+    public static int interpretColor(int[] colors, float unit) {
 
         if (unit <= 0) {
             return colors[0];
