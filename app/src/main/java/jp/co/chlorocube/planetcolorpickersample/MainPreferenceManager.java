@@ -2,7 +2,8 @@ package jp.co.chlorocube.planetcolorpickersample;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
+
+import androidx.preference.PreferenceManager;
 
 class MainPreferenceManager {
 
@@ -10,7 +11,7 @@ class MainPreferenceManager {
     private static final String KEY_SATURATION = "SATURATION";
     private static final String KEY_BRIGHT = "BRIGHT";
 
-    public static void setColor(Context context, float[] color) {
+    static void setColor(Context context, float[] color) {
         if (context == null)
             return;
 
@@ -22,7 +23,7 @@ class MainPreferenceManager {
         editor.apply();
     }
 
-    public static float[] getColor(Context context) {
+    static float[] getColor(Context context) {
         if (context == null)
             return null;
 

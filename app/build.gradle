@@ -3,17 +3,17 @@ import java.text.SimpleDateFormat
 apply plugin: 'com.android.application'
 
 def date = new Date()
-def VERSION_CODE = Integer.parseInt(new SimpleDateFormat("yyyyMMddHHmm").format(date).substring(2))
+def VERSION_CODE = Integer.parseInt(new SimpleDateFormat("yyyyMMddHH").format(date).substring(2))
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "jp.co.chlorocube.planetcolorpickersample"
         minSdkVersion 17
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode VERSION_CODE
-        versionName "1.0.1"
+        versionName "1.0.2"
         archivesBaseName = "PlanetColorPicker_v${versionName}_${versionCode}"
     }
     buildTypes {
@@ -39,6 +39,7 @@ android {
 }
 
 dependencies {
-    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.preference:preference:1.1.1'
     implementation project(":planetcolorpicker")
 }

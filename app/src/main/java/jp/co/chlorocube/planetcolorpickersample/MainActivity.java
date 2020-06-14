@@ -4,11 +4,12 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import jp.co.chlorocube.planetcolorpicker.ColorPickerView;
 
@@ -22,13 +23,13 @@ public class MainActivity extends AppCompatActivity {
         final TextView textView = findViewById(R.id.color_picker_text_view);
 
         ColorPickerView view = findViewById(R.id.color_picker_main_view);
-        view.initializePicker(MainPreferenceManager.getColor(this), new ColorPickerView.ColorChangeListener(){
-                    @Override
-                    public void onColorChanged(float[] hsv) {
-                        textView.setText(getColorCode(Color.HSVToColor(hsv)));
-                        MainPreferenceManager.setColor(MainActivity.this, hsv);
-                    }
-                });
+        view.initializePicker(MainPreferenceManager.getColor(this), new ColorPickerView.ColorChangeListener() {
+            @Override
+            public void onColorChanged(float[] hsv) {
+                textView.setText(getColorCode(Color.HSVToColor(hsv)));
+                MainPreferenceManager.setColor(MainActivity.this, hsv);
+            }
+        });
 
         int currentColor = view.getCurrentColor();
         textView.setText(getColorCode(currentColor));
