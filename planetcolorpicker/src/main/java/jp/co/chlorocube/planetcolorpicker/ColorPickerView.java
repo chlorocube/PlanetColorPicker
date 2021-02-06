@@ -64,6 +64,8 @@ public class ColorPickerView extends View {
     private boolean mIsTrackingBright = false;
     private boolean mIsTrackingSaturation = false;
 
+    private final RectF mRect = new RectF();
+
     private ColorChangeListener mListener = null;
 
     public ColorPickerView(Context context) {
@@ -88,14 +90,16 @@ public class ColorPickerView extends View {
     protected void onDraw(Canvas canvas) {
 
         float r = ColorPickerUtils.toPx(getContext(), OUTER_RADIUS_DIP);
+        mRect.set(-r, -r, r, r);
         float padding = ColorPickerUtils.toPx(getContext(), PADDING_DIP);
         canvas.translate(r + padding, r + padding);
         canvas.drawCircle(0, 0, r, mBackgroundPaint);
-        canvas.drawOval(new RectF(-r, -r, r, r), mWheelPaint);
+        canvas.drawOval(mRect, mWheelPaint);
 
         r = ColorPickerUtils.toPx(getContext(), INNER_RADIUS_DIP);
-        canvas.drawArc(new RectF(-r, -r, r, r), 30f, 120f, false, mBrightPaint);
-        canvas.drawArc(new RectF(-r, -r, r, r), 210f, 120f, false, mSaturationPaint);
+        mRect.set(-r, -r, r, r);
+        canvas.drawArc(mRect, 30f, 120f, false, mBrightPaint);
+        canvas.drawArc(mRect, 210f, 120f, false, mSaturationPaint);
 
         if (mWheelThumbPoint != null) {
             canvas.drawCircle(mWheelThumbPoint.x,
