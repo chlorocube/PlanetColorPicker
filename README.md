@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'jp.co.chlorocube:planetcolorpicker:1.0.0'
+    implementation 'jp.co.chlorocube:planetcolorpicker:1.0.3'
 }
 ```
 
