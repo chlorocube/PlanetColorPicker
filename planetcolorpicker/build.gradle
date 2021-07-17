@@ -5,15 +5,15 @@ android {
     defaultConfig {
         minSdkVersion 17
         targetSdkVersion 30
-        versionCode 3
-        versionName "1.0.3"
+        versionCode 4
+        versionName "1.0.4"
     }
 
     buildTypes {
         release {
             debuggable false
-            zipAlignEnabled true
-            minifyEnabled true
+            zipAlignEnabled false
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -29,7 +29,7 @@ uploadArchives {
     repositories {
         mavenDeployer {
             repository url: "file://${repo.absolutePath}"
-            pom.version = '1.0.3'
+            pom.version = '1.0.4'
             pom.groupId = 'jp.co.chlorocube'
             pom.artifactId = 'planetcolorpicker'
         }
