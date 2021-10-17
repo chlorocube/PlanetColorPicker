@@ -18,7 +18,7 @@ grab via Gradle:
 ```
 repositories {
     maven {
-        url 'http://chlorocube.github.io/PlanetColorPicker/repository'
+        url 'https://chlorocube.github.io/PlanetColorPicker/repository'
     }
 }
 
