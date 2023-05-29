@@ -96,7 +96,11 @@ class ColorPickerView : View {
             )
         }
         r = ColorPickerUtils.toPx(context, CENTER_RADIUS_DIP).toFloat()
-        canvas.drawCircle(0f, -padding / 7, r, mCenterPaint!!)
+        if (mNeedsOldColorDraw) {
+            canvas.drawCircle(0f, -padding / 7, r, mCenterPaint!!)
+        } else {
+            canvas.drawCircle(0f, 0f, r, mCenterPaint!!)
+        }
         if (mNeedsOldColorDraw) {
             r = ColorPickerUtils.toPx(context, CENTER_OLD_RADIUS_DIP).toFloat()
             canvas.drawCircle(padding * 2 / 3, padding / 2, r, mCenterOldPaint!!)
