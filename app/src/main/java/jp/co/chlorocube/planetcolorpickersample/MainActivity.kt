@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun drawCircle01() {
+        val scrollView = findViewById<OperableScrollView>(R.id.scroll)
         val textView = findViewById<TextView>(R.id.color_picker_text_view_01)
         val view = findViewById<ColorPickerView>(R.id.color_picker_main_view_01)
         view.initializePicker(MainPreferenceManager.getColor(this)!!, object : ColorChangeListener {
@@ -29,12 +30,21 @@ class MainActivity : AppCompatActivity() {
                 textView.text = getColorCode(Color.HSVToColor(hsv))
                 MainPreferenceManager.setColor(this@MainActivity, hsv)
             }
+        }, object : ColorPickerView.TrackListener {
+            override fun onStartTrack() {
+                scrollView.disableScroll()
+            }
+
+            override fun onStopTrack() {
+                scrollView.enableScroll()
+            }
         })
         val currentColor = view.currentColor
         textView.text = getColorCode(currentColor)
     }
 
     private fun drawCircle02() {
+        val scrollView = findViewById<OperableScrollView>(R.id.scroll)
         val textView = findViewById<TextView>(R.id.color_picker_text_view_02)
         val view = findViewById<ColorPickerView>(R.id.color_picker_main_view_02)
         view.initializePicker(MainPreferenceManager.getColor(this)!!, object : ColorChangeListener {
@@ -42,18 +52,35 @@ class MainActivity : AppCompatActivity() {
                 textView.text = getColorCode(Color.HSVToColor(hsv))
                 //MainPreferenceManager.setColor(this@MainActivity, hsv)
             }
+        }, object : ColorPickerView.TrackListener {
+            override fun onStartTrack() {
+                scrollView.disableScroll()
+            }
+
+            override fun onStopTrack() {
+                scrollView.enableScroll()
+            }
         }, true)
         val currentColor = view.currentColor
         textView.text = getColorCode(currentColor)
     }
 
     private fun drawCircle03() {
+        val scrollView = findViewById<OperableScrollView>(R.id.scroll)
         val textView = findViewById<TextView>(R.id.color_picker_text_view_03)
         val view = findViewById<ColorPickerView>(R.id.color_picker_main_view_03)
         view.initializePicker(MainPreferenceManager.getColor(this)!!, object : ColorChangeListener {
             override fun onColorChanged(hsv: FloatArray) {
                 textView.text = getColorCode(Color.HSVToColor(hsv))
                 //MainPreferenceManager.setColor(this@MainActivity, hsv)
+            }
+        }, object : ColorPickerView.TrackListener {
+            override fun onStartTrack() {
+                scrollView.disableScroll()
+            }
+
+            override fun onStopTrack() {
+                scrollView.enableScroll()
             }
         }, false, false, 120)
         val currentColor = view.currentColor

@@ -12,6 +12,11 @@ class ColorPickerView : View {
         fun onColorChanged(hsv: FloatArray)
     }
 
+    interface TrackListener {
+        fun onStartTrack()
+        fun onStopTrack()
+    }
+
     private var mHue = 0f // 0~359
     private var mSaturationRatio = 1f // 0~1
     private var mBrightRatio = 1f // 0~1
@@ -35,6 +40,7 @@ class ColorPickerView : View {
     private var mIsTrackingSaturation = false
     private val mRect = RectF()
     private var mListener: ColorChangeListener? = null
+    private var mTrackListener: TrackListener? = null
     private var mNeedsComplementaryColorBackgroundDraw: Boolean = false
     private var mNeedsOldColorDraw: Boolean = true
     private var mOuterRadiusDip = OUTER_RADIUS_DIP
@@ -102,28 +108,31 @@ class ColorPickerView : View {
         val x = event.x - r - ColorPickerUtils.toPx(context, PADDING_DIP)
         val y = event.y - r - ColorPickerUtils.toPx(context, PADDING_DIP)
         when (event.action) {
-            MotionEvent.ACTION_DOWN -> if (hypot(
-                    x.toDouble(),
-                    y.toDouble()
-                ) > ColorPickerUtils.toPx(
-                    context,
-                    (mOuterRadiusDip - mInnerRadiusDip) / 2 + mInnerRadiusDip
-                )
-            ) {
-                mIsTrackingWheel = true
-                redrawByTrackingWheel(x, y)
-            } else if (hypot(x.toDouble(), y.toDouble()) > ColorPickerUtils.toPx(
-                    context,
-                    (mInnerRadiusDip - CENTER_RADIUS_DIP) / 2 + CENTER_RADIUS_DIP
-                )
-            ) {
-                if (y < 0) {
-                    mIsTrackingSaturation = true
-                    redrawByTrackingSaturation(x, y)
-                } else if (y > 0) {
-                    mIsTrackingBright = true
-                    redrawByTrackingBright(x, y)
+            MotionEvent.ACTION_DOWN -> {
+                if (hypot(
+                        x.toDouble(),
+                        y.toDouble()
+                    ) > ColorPickerUtils.toPx(
+                        context,
+                        (mOuterRadiusDip - mInnerRadiusDip) / 2 + mInnerRadiusDip
+                    )
+                ) {
+                    mIsTrackingWheel = true
+                    redrawByTrackingWheel(x, y)
+                } else if (hypot(x.toDouble(), y.toDouble()) > ColorPickerUtils.toPx(
+                        context,
+                        (mInnerRadiusDip - CENTER_RADIUS_DIP) / 2 + CENTER_RADIUS_DIP
+                    )
+                ) {
+                    if (y < 0) {
+                        mIsTrackingSaturation = true
+                        redrawByTrackingSaturation(x, y)
+                    } else if (y > 0) {
+                        mIsTrackingBright = true
+                        redrawByTrackingBright(x, y)
+                    }
                 }
+                mTrackListener?.onStartTrack()
             }
             MotionEvent.ACTION_MOVE -> if (mIsTrackingWheel) {
                 redrawByTrackingWheel(x, y)
@@ -136,8 +145,12 @@ class ColorPickerView : View {
                 mIsTrackingWheel = false
                 mIsTrackingBright = false
                 mIsTrackingSaturation = false
+
+                mTrackListener?.onStopTrack()
             }
-            else -> {}
+            else -> {
+                mTrackListener?.onStopTrack()
+            }
         }
         return true
     }
@@ -159,12 +172,14 @@ class ColorPickerView : View {
     /**
      * Used to do a one-time initialization of the ColorPickerView.
      * @param listener ColorChangeListener
+     * @param trackListener TrackListener
      * @param needsComplementaryColorBackgroundDraw if true, draw complementary-color-background
      * @param needsOldColorDraw if true, draw previous-color
      * @param outerRadiusDip hue circle radius (dp)
      */
     fun initializePicker(
         listener: ColorChangeListener,
+        trackListener: TrackListener?,
         needsComplementaryColorBackgroundDraw: Boolean = false,
         needsOldColorDraw: Boolean = true,
         outerRadiusDip: Int = OUTER_RADIUS_DIP,
@@ -177,7 +192,8 @@ class ColorPickerView : View {
             DEFAULT_HUE.toFloat(),
             DEFAULT_SATURATION.toFloat(),
             DEFAULT_BRIGHT.toFloat(),
-            listener
+            listener,
+            trackListener
         )
     }
 
@@ -185,6 +201,7 @@ class ColorPickerView : View {
      * Used to do a one-time initialization of the ColorPickerView.
      * @param hsv initial HSV values
      * @param listener ColorChangeListener
+     * @param trackListener TrackListener
      * @param needsComplementaryColorBackgroundDraw if true, draw complementary-color-background
      * @param needsOldColorDraw if true, draw previous-color
      * @param outerRadiusDip hue circle radius (dp)
@@ -192,6 +209,7 @@ class ColorPickerView : View {
     fun initializePicker(
         hsv: FloatArray,
         listener: ColorChangeListener,
+        trackListener: TrackListener?,
         needsComplementaryColorBackgroundDraw: Boolean = false,
         needsOldColorDraw: Boolean = true,
         outerRadiusDip: Int = OUTER_RADIUS_DIP,
@@ -200,16 +218,19 @@ class ColorPickerView : View {
         mNeedsOldColorDraw = needsOldColorDraw
         mOuterRadiusDip = outerRadiusDip
         mInnerRadiusDip = mOuterRadiusDip - 30
-        initializePicker(hsv[0], hsv[1], hsv[2], listener)
+        initializePicker(hsv[0], hsv[1], hsv[2], listener, trackListener)
     }
 
     private fun initializePicker(
         hue: Float,
         saturation: Float,
         bright: Float,
-        listener: ColorChangeListener
+        listener: ColorChangeListener,
+        trackListener: TrackListener?
     ) {
         mListener = listener
+        mTrackListener = trackListener
+
         mBackgroundPaint = Paint(Paint.ANTI_ALIAS_FLAG)
         mBackgroundPaint!!.style = Paint.Style.FILL
         mWheelPaint = Paint(Paint.ANTI_ALIAS_FLAG)
