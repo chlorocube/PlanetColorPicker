@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'jp.co.chlorocube:planetcolorpicker:1.0.4'
+    implementation 'jp.co.chlorocube:planetcolorpicker:1.0.5'
 }
 ```
 
@@ -38,31 +38,60 @@ Usage
         android:layout_height="wrap_content"/>
 ```
 
-2. Then, call initialization method in your java file.
-```java
-    float[] initColor = new float[3];
-    initColor[0] = 0; // hue (0-359)
-    initColor[1] = 0; // saturation (0-1)
-    initColor[2] = 1; // value (0-1)
+2. Then, call initialization method in your kotlin file.
+```kotlin
+    val initColor = FloatArray(3)
+    initColor[0] = 0f // hue (0-359)
+    initColor[1] = 0f // saturation (0-1)
+    initColor[2] = 1f // value (0-1)
       
-    ColorPickerView view = findViewById(R.id.color_picker_view);
-    view.initializePicker(initColor, new ColorPickerView.ColorChangeListener(){
-        @Override
-        public void onColorChanged(float[] hsv) {
+    val view = findViewById<ColorPickerView>(R.id.color_picker_view)
+    view.initializePicker(initColor, object : ColorChangeListener {
+        override fun onColorChanged(hsv: FloatArray) {
             // ...
         }
-    });
+    })
       
     // You can also call the follow methods.
-    int currentColor = view.getCurrentColor();
-    float[] currentHSV = view.getCurrentHsv();
+    val currentColor = view.currentColor
+    val currentHSV = view.currentHsv
+```
+
+Example
+-------
+![exm01.png](https://github.com/chlorocube/PlanetColorPicker/blob/master/screenshot/exm01.png)
+```kotlin
+    view.initializePicker(initColor, object : ColorChangeListener {
+        override fun onColorChanged(hsv: FloatArray) {
+            // ...
+        }
+    })
+```
+![exm02.png](https://github.com/chlorocube/PlanetColorPicker/blob/master/screenshot/exm02.png)
+```kotlin
+    view.initializePicker(initColor, object : ColorChangeListener {
+        override fun onColorChanged(hsv: FloatArray) {
+            // ...
+        }
+    }, true) // needsComplementaryColorBackgroundDraw = true
+```
+![exm03.png](https://github.com/chlorocube/PlanetColorPicker/blob/master/screenshot/exm03.png)
+```kotlin
+    view.initializePicker(initColor, object : ColorChangeListener {
+        override fun onColorChanged(hsv: FloatArray) {
+            // ...
+        }
+    }, false, false, 120)
+    // needsComplementaryColorBackgroundDraw = false
+    // needsOldColorDraw = false
+    // outerRadiusDip = 120
 ```
 
 License
 -------
 
 ```txt
-Copyright 2019 chlorocube
+Copyright 2023 chlorocube
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
