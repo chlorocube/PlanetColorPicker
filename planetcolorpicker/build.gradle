@@ -1,12 +1,23 @@
-apply plugin: 'com.android.library'
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'maven-publish'
+}
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 33
     defaultConfig {
         minSdkVersion 17
-        targetSdkVersion 30
-        versionCode 4
-        versionName "1.0.4"
+        targetSdkVersion 33
+        versionCode 5
+        versionName "1.0.5"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
     }
 
     buildTypes {
@@ -20,18 +31,22 @@ android {
 }
 
 dependencies {
+    implementation 'androidx.core:core-ktx:1.10.1'
 }
 
 def repo = new File(rootDir, "repository")
-apply plugin: 'maven'
-
-uploadArchives {
+publishing {
     repositories {
-        mavenDeployer {
-            repository url: "file://${repo.absolutePath}"
-            pom.version = '1.0.4'
-            pom.groupId = 'jp.co.chlorocube'
-            pom.artifactId = 'planetcolorpicker'
+        maven {
+            name = "planetcolorpicker"
+            url = uri("file://${repo.absolutePath}")
+        }
+    }
+    publications {
+        gpr(MavenPublication) {
+            version = '1.0.5'
+            groupId = 'jp.co.chlorocube'
+            artifactId = 'planetcolorpicker'
         }
     }
 }

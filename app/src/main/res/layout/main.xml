@@ -1,17 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/color_picker_root_view"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center">
-    <jp.co.chlorocube.planetcolorpicker.ColorPickerView
-        android:id="@+id/color_picker_main_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/color_picker_text_view"
-        android:layout_width="wrap_content"
+    android:background="#ccddff">
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16sp" />
-</LinearLayout>
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <jp.co.chlorocube.planetcolorpicker.ColorPickerView
+            android:id="@+id/color_picker_main_view_01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/color_picker_text_view_01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="Default"
+            android:textSize="16sp" />
+
+        <jp.co.chlorocube.planetcolorpicker.ColorPickerView
+            android:id="@+id/color_picker_main_view_02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/color_picker_text_view_02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="Draw complementary-color-background"
+            android:textSize="16sp" />
+
+        <jp.co.chlorocube.planetcolorpicker.ColorPickerView
+            android:id="@+id/color_picker_main_view_03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/color_picker_text_view_03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="No previous-color &amp; Custom radius"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="100dp" />
+    </LinearLayout>
+</ScrollView>
