@@ -50,7 +50,7 @@ Usage
         override fun onColorChanged(hsv: FloatArray) {
             // ...
         }
-    })
+    }, null)
       
     // You can also call the follow methods.
     val currentColor = view.currentColor
@@ -65,7 +65,7 @@ Example
         override fun onColorChanged(hsv: FloatArray) {
             // ...
         }
-    })
+    }, null)
 ```
 ![exm02.png](https://github.com/chlorocube/PlanetColorPicker/blob/master/screenshot/exm02.png)
 ```kotlin
@@ -73,7 +73,7 @@ Example
         override fun onColorChanged(hsv: FloatArray) {
             // ...
         }
-    }, true) // needsComplementaryColorBackgroundDraw = true
+    }, null, true) // needsComplementaryColorBackgroundDraw = true
 ```
 ![exm03.png](https://github.com/chlorocube/PlanetColorPicker/blob/master/screenshot/exm03.png)
 ```kotlin
@@ -81,7 +81,7 @@ Example
         override fun onColorChanged(hsv: FloatArray) {
             // ...
         }
-    }, false, false, 120)
+    }, null, false, false, 120)
     // needsComplementaryColorBackgroundDraw = false
     // needsOldColorDraw = false
     // outerRadiusDip = 120
