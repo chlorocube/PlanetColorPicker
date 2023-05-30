@@ -28,6 +28,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    publishing {
+        singleVariant("release") {
+            //withSourcesJar()
+            //withJavadocJar()
+        }
+    }
 }
 
 dependencies {
@@ -35,18 +41,21 @@ dependencies {
 }
 
 def repo = new File(rootDir, "repository")
-publishing {
-    repositories {
-        maven {
-            name = "planetcolorpicker"
-            url = uri("file://${repo.absolutePath}")
+afterEvaluate {
+    publishing {
+        repositories {
+            maven {
+                name = "planetcolorpicker"
+                url = uri("file://${repo.absolutePath}")
+            }
         }
-    }
-    publications {
-        gpr(MavenPublication) {
-            version = '1.0.5'
-            groupId = 'jp.co.chlorocube'
-            artifactId = 'planetcolorpicker'
+        publications {
+            release(MavenPublication) {
+                from components.release
+                version = '1.0.5'
+                groupId = 'jp.co.chlorocube'
+                artifactId = 'planetcolorpicker'
+            }
         }
     }
 }
