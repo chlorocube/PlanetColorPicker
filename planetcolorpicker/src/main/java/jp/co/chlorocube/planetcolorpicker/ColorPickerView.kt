@@ -182,7 +182,7 @@ class ColorPickerView : View {
      * @param outerRadiusDip hue circle radius (dp)
      */
     fun initializePicker(
-        listener: ColorChangeListener,
+        listener: ColorChangeListener?,
         trackListener: TrackListener?,
         needsComplementaryColorBackgroundDraw: Boolean = false,
         needsOldColorDraw: Boolean = true,
@@ -212,7 +212,7 @@ class ColorPickerView : View {
      */
     fun initializePicker(
         hsv: FloatArray,
-        listener: ColorChangeListener,
+        listener: ColorChangeListener?,
         trackListener: TrackListener?,
         needsComplementaryColorBackgroundDraw: Boolean = false,
         needsOldColorDraw: Boolean = true,
@@ -229,7 +229,7 @@ class ColorPickerView : View {
         hue: Float,
         saturation: Float,
         bright: Float,
-        listener: ColorChangeListener,
+        listener: ColorChangeListener?,
         trackListener: TrackListener?
     ) {
         mListener = listener
