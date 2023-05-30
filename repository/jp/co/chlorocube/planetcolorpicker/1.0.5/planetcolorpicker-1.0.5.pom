@@ -18,11 +18,5 @@
       <version>1.8.0</version>
       <scope>compile</scope>
     </dependency>
-    <dependency>
-      <groupId>androidx.core</groupId>
-      <artifactId>core-ktx</artifactId>
-      <version>1.10.1</version>
-      <scope>runtime</scope>
-    </dependency>
   </dependencies>
 </project>

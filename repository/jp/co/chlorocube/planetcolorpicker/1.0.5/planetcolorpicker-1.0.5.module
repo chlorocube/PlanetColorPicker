@@ -35,11 +35,11 @@
         {
           "name": "planetcolorpicker-1.0.5.aar",
           "url": "planetcolorpicker-1.0.5.aar",
-          "size": 15380,
-          "sha512": "e82148d76783726f6e238809ed54950cab9d7bad99c47d0e74a7c7391afe4210e3cb5b77ae179e49d64be6d7aa11a172e2c1e2563ecdd2a99ecfc3b7bdb9cd32",
-          "sha256": "fb3305ef37213010a00d66ddf57af18ffcbd339e7857bd46c2c4da41f00fb419",
-          "sha1": "e19a4e9c191da2da89543fec381227637e39c203",
-          "md5": "c2916546d9497b1402593526b2cc9180"
+          "size": 13785,
+          "sha512": "44e791407c6c64428f3496c7f722ba4bb74dee3638e621a8e6dadfcfe95a2f2604709d2865cb33b5178414cc50715d2efc9a96015d5af383857ba479dcb543d8",
+          "sha256": "eac6dd9255107ed45d7e812e484cc428b771bde769c8192fc1b71ee257d30e21",
+          "sha1": "84798ff0b31ddbc90549139e4368c15a57909ff5",
+          "md5": "3e8a7c053a5765839380eba4b06cb2e3"
         }
       ]
     },
@@ -53,13 +53,6 @@
       },
       "dependencies": [
         {
-          "group": "androidx.core",
-          "module": "core-ktx",
-          "version": {
-            "requires": "1.10.1"
-          }
-        },
-        {
           "group": "org.jetbrains.kotlin",
           "module": "kotlin-stdlib-jdk8",
           "version": {
@@ -71,11 +64,11 @@
         {
           "name": "planetcolorpicker-1.0.5.aar",
           "url": "planetcolorpicker-1.0.5.aar",
-          "size": 15380,
-          "sha512": "e82148d76783726f6e238809ed54950cab9d7bad99c47d0e74a7c7391afe4210e3cb5b77ae179e49d64be6d7aa11a172e2c1e2563ecdd2a99ecfc3b7bdb9cd32",
-          "sha256": "fb3305ef37213010a00d66ddf57af18ffcbd339e7857bd46c2c4da41f00fb419",
-          "sha1": "e19a4e9c191da2da89543fec381227637e39c203",
-          "md5": "c2916546d9497b1402593526b2cc9180"
+          "size": 13785,
+          "sha512": "44e791407c6c64428f3496c7f722ba4bb74dee3638e621a8e6dadfcfe95a2f2604709d2865cb33b5178414cc50715d2efc9a96015d5af383857ba479dcb543d8",
+          "sha256": "eac6dd9255107ed45d7e812e484cc428b771bde769c8192fc1b71ee257d30e21",
+          "sha1": "84798ff0b31ddbc90549139e4368c15a57909ff5",
+          "md5": "3e8a7c053a5765839380eba4b06cb2e3"
         }
       ]
     }
