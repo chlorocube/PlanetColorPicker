@@ -35,11 +35,11 @@
         {
           "name": "planetcolorpicker-1.0.5.aar",
           "url": "planetcolorpicker-1.0.5.aar",
-          "size": 13771,
-          "sha512": "aa1e2eb985ea3828a51f2980bd018a116509020b15c5d7ca4dddedcbf61f0c0540b0d62c6a046d18eff7d46fc010a153b8541446bc8fd918454bec94de5a276e",
-          "sha256": "c0ce581e49490e2b36792dfb5745c7c9a56af8bd939caa1ee5141cab4d8e66d4",
-          "sha1": "f04a71f84bfa2539bab4cc3eadc8865a70b00221",
-          "md5": "56fbbee1218e39369224b95de869624e"
+          "size": 14046,
+          "sha512": "abeed6974aee61b8247a4875f560adb9079ca50028703fe72573d332310c3f24ceb61c8ed25a1ec68475618702635639172a6bf4a3a6868e17301e683d237618",
+          "sha256": "49679356feaae4564b088d831d6c83d087bd13848b793a78e16628a99474ca22",
+          "sha1": "47f8ba273cd5784f4fea08715eaa065d384cac9c",
+          "md5": "27297a0e62432898154fb48c122b26f3"
         }
       ]
     },
@@ -64,11 +64,11 @@
         {
           "name": "planetcolorpicker-1.0.5.aar",
           "url": "planetcolorpicker-1.0.5.aar",
-          "size": 13771,
-          "sha512": "aa1e2eb985ea3828a51f2980bd018a116509020b15c5d7ca4dddedcbf61f0c0540b0d62c6a046d18eff7d46fc010a153b8541446bc8fd918454bec94de5a276e",
-          "sha256": "c0ce581e49490e2b36792dfb5745c7c9a56af8bd939caa1ee5141cab4d8e66d4",
-          "sha1": "f04a71f84bfa2539bab4cc3eadc8865a70b00221",
-          "md5": "56fbbee1218e39369224b95de869624e"
+          "size": 14046,
+          "sha512": "abeed6974aee61b8247a4875f560adb9079ca50028703fe72573d332310c3f24ceb61c8ed25a1ec68475618702635639172a6bf4a3a6868e17301e683d237618",
+          "sha256": "49679356feaae4564b088d831d6c83d087bd13848b793a78e16628a99474ca22",
+          "sha1": "47f8ba273cd5784f4fea08715eaa065d384cac9c",
+          "md5": "27297a0e62432898154fb48c122b26f3"
         }
       ]
     },
@@ -84,11 +84,11 @@
         {
           "name": "planetcolorpicker-1.0.5-sources.jar",
           "url": "planetcolorpicker-1.0.5-sources.jar",
-          "size": 5427,
-          "sha512": "0614fdc02793a48f3a549ffb3e9ff5412df0b77ba0d0d6f00da2a5b0d3601316bddd6ccf43cec80fa603a80a2babf67bc08b2c8a39d9c83b3a3bca0acfc5eee5",
-          "sha256": "a013dd7afe575e0da6bb19c862b729c81fa8d6c8cd6a73c14f547fef8f703b12",
-          "sha1": "a49a1dd1508756224614c7858f42a8c4dc348544",
-          "md5": "2637b74a7d058eba80b96177a525bf45"
+          "size": 5528,
+          "sha512": "342335ae2356c519081d25aafef83520f7c7486e02fb09d7d1107ca00e867abbd9d93ab6d63a5610f5a87799711d259a32ce6b201aff23f82643b629bdae7421",
+          "sha256": "66657d23e398c7da97b32ac3f0609424159a39b59c03f15faf2326361d9bf826",
+          "sha1": "7adeddad3ff22ff255794583f7cb3cdffeba1422",
+          "md5": "236eb218539bced9d9c16604316bff6a"
         }
       ]
     },
@@ -104,11 +104,11 @@
         {
           "name": "planetcolorpicker-1.0.5-javadoc.jar",
           "url": "planetcolorpicker-1.0.5-javadoc.jar",
-          "size": 330481,
-          "sha512": "37539c44a7953d6a188191257fb9a3b4cdc579ff70c2d01c89677e66ce1b115285d2fe4c07728ddb730f69fc06c1e9a74b10aff155ca943e81093797528da046",
-          "sha256": "616b84277001f9373357fd770aa668555b83c1e4fb918b48f455af97c0fe128c",
-          "sha1": "037588eb908734b724221ccfa9783252387e8f22",
-          "md5": "c4ef046075aab81662d2912fe4f4faff"
+          "size": 330886,
+          "sha512": "d6b5ff4462bc50e308441f18e3cd0d9e661cc14aa4a90ff36b6833c28446cb1fff8a9680e69b049eeaa3b6db1cae42f40ff1c33a6993b752f17c472762ccc07f",
+          "sha256": "5ad609f8d60bcc00a3c7b54d8ad6f19ca1de50070e7109ea7ba6f73347ddcc00",
+          "sha1": "5fb7981c4290bbb74884a6c5a85d58083bc767ce",
+          "md5": "9e817b5ed62fb4e88dfe0110e50f3ebe"
         }
       ]
     }
