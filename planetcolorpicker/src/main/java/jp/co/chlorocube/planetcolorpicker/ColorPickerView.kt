@@ -225,6 +225,14 @@ class ColorPickerView : View {
         initializePicker(hsv[0], hsv[1], hsv[2], listener, trackListener)
     }
 
+    /**
+     * Update ColorPickerView
+     * @param hsv HSV values
+     */
+    fun updatePicker(hsv: FloatArray) {
+        updatePicker(hsv[0], hsv[1], hsv[2])
+    }
+
     private fun initializePicker(
         hue: Float,
         saturation: Float,
@@ -261,6 +269,24 @@ class ColorPickerView : View {
         mBrightThumbPaint!!.style = Paint.Style.FILL
         mSaturationThumbPaint = Paint(Paint.ANTI_ALIAS_FLAG)
         mSaturationThumbPaint!!.style = Paint.Style.FILL
+
+        coordinateColor(hue, saturation, bright)
+    }
+
+    private fun updatePicker(
+        hue: Float,
+        saturation: Float,
+        bright: Float
+    ) {
+        coordinateColor(hue, saturation, bright)
+        invalidate()
+    }
+
+    private fun coordinateColor(
+        hue: Float,
+        saturation: Float,
+        bright: Float
+    ) {
         mHue = hue
         mSaturationRatio = saturation
         mBrightRatio = bright

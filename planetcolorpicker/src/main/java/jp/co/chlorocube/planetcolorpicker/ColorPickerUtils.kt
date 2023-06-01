@@ -12,10 +12,28 @@ object ColorPickerUtils {
         return (metrics.density * dip + 0.5).toInt()
     }
 
+    fun get(color: Int): FloatArray {
+        val hsv = FloatArray(3)
+        Color.colorToHSV(color, hsv)
+        return hsv
+    }
+
     fun getHue(color: Int): Float {
         val hsv = FloatArray(3)
         Color.colorToHSV(color, hsv)
         return hsv[0]
+    }
+
+    fun getSaturation(color: Int): Float {
+        val hsv = FloatArray(3)
+        Color.colorToHSV(color, hsv)
+        return hsv[1]
+    }
+
+    fun getValue(color: Int): Float {
+        val hsv = FloatArray(3)
+        Color.colorToHSV(color, hsv)
+        return hsv[2]
     }
 
     fun getHSVColor(hue: Float, saturation: Float, value: Float): Int {
