@@ -55,19 +55,19 @@ class ColorPickerView : View {
     )
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        val width = ColorPickerUtils.toPx(context, mOuterRadiusDip + PADDING_DIP) * 2
+        val width = toPx(context, mOuterRadiusDip + PADDING_DIP) * 2
         setMeasuredDimension(width, width)
     }
 
     override fun onDraw(canvas: Canvas) {
-        var r = ColorPickerUtils.toPx(context, mOuterRadiusDip).toFloat()
+        var r = toPx(context, mOuterRadiusDip).toFloat()
         mRect[-r, -r, r] = r
-        val padding = ColorPickerUtils.toPx(context, PADDING_DIP).toFloat()
+        val padding = toPx(context, PADDING_DIP).toFloat()
         canvas.translate(r + padding, r + padding)
         if (mNeedsComplementaryColorBackgroundDraw)
             canvas.drawCircle(0f, 0f, r, mBackgroundPaint!!)
         canvas.drawOval(mRect, mWheelPaint!!)
-        r = ColorPickerUtils.toPx(context, mInnerRadiusDip).toFloat()
+        r = toPx(context, mInnerRadiusDip).toFloat()
         mRect[-r, -r, r] = r
         canvas.drawArc(mRect, 30f, 120f, false, mBrightPaint!!)
         canvas.drawArc(mRect, 210f, 120f, false, mSaturationPaint!!)
@@ -75,7 +75,7 @@ class ColorPickerView : View {
             canvas.drawCircle(
                 mWheelThumbPoint!!.x,
                 mWheelThumbPoint!!.y,
-                ColorPickerUtils.toPx(context, THUMB_RADIUS_DIP).toFloat(),
+                toPx(context, THUMB_RADIUS_DIP).toFloat(),
                 mWheelThumbPaint!!
             )
         }
@@ -83,7 +83,7 @@ class ColorPickerView : View {
             canvas.drawCircle(
                 mBrightThumbPoint!!.x,
                 mBrightThumbPoint!!.y,
-                ColorPickerUtils.toPx(context, THUMB_RADIUS_DIP).toFloat(),
+                toPx(context, THUMB_RADIUS_DIP).toFloat(),
                 mBrightThumbPaint!!
             )
         }
@@ -91,39 +91,39 @@ class ColorPickerView : View {
             canvas.drawCircle(
                 mSaturationThumbPoint!!.x,
                 mSaturationThumbPoint!!.y,
-                ColorPickerUtils.toPx(context, THUMB_RADIUS_DIP).toFloat(),
+                toPx(context, THUMB_RADIUS_DIP).toFloat(),
                 mSaturationThumbPaint!!
             )
         }
-        r = ColorPickerUtils.toPx(context, CENTER_RADIUS_DIP).toFloat()
+        r = toPx(context, CENTER_RADIUS_DIP).toFloat()
         if (mNeedsOldColorDraw) {
             canvas.drawCircle(0f, -padding / 7, r, mCenterPaint!!)
         } else {
             canvas.drawCircle(0f, 0f, r, mCenterPaint!!)
         }
         if (mNeedsOldColorDraw) {
-            r = ColorPickerUtils.toPx(context, CENTER_OLD_RADIUS_DIP).toFloat()
+            r = toPx(context, CENTER_OLD_RADIUS_DIP).toFloat()
             canvas.drawCircle(padding * 2 / 3, padding / 2, r, mCenterOldPaint!!)
         }
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
-        val r = ColorPickerUtils.toPx(context, mOuterRadiusDip).toFloat()
-        val x = event.x - r - ColorPickerUtils.toPx(context, PADDING_DIP)
-        val y = event.y - r - ColorPickerUtils.toPx(context, PADDING_DIP)
+        val r = toPx(context, mOuterRadiusDip).toFloat()
+        val x = event.x - r - toPx(context, PADDING_DIP)
+        val y = event.y - r - toPx(context, PADDING_DIP)
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
                 if (hypot(
                         x.toDouble(),
                         y.toDouble()
-                    ) > ColorPickerUtils.toPx(
+                    ) > toPx(
                         context,
                         (mOuterRadiusDip - mInnerRadiusDip) / 2 + mInnerRadiusDip
                     )
                 ) {
                     mIsTrackingWheel = true
                     redrawByTrackingWheel(x, y)
-                } else if (hypot(x.toDouble(), y.toDouble()) > ColorPickerUtils.toPx(
+                } else if (hypot(x.toDouble(), y.toDouble()) > toPx(
                         context,
                         (mInnerRadiusDip - CENTER_RADIUS_DIP) / 2 + CENTER_RADIUS_DIP
                     )
@@ -247,18 +247,15 @@ class ColorPickerView : View {
         mBackgroundPaint!!.style = Paint.Style.FILL
         mWheelPaint = Paint(Paint.ANTI_ALIAS_FLAG)
         mWheelPaint!!.style = Paint.Style.STROKE
-        mWheelPaint!!.strokeWidth =
-            ColorPickerUtils.toPx(context, STROKE_WIDTH_DIP).toFloat()
+        mWheelPaint!!.strokeWidth = toPx(context, STROKE_WIDTH_DIP).toFloat()
         val outerShader: Shader = SweepGradient(0f, 0f, WHEEL_COLORS, null)
         mWheelPaint!!.shader = outerShader
         mBrightPaint = Paint(Paint.ANTI_ALIAS_FLAG)
         mBrightPaint!!.style = Paint.Style.STROKE
-        mBrightPaint!!.strokeWidth =
-            ColorPickerUtils.toPx(context, STROKE_WIDTH_DIP).toFloat()
+        mBrightPaint!!.strokeWidth = toPx(context, STROKE_WIDTH_DIP).toFloat()
         mSaturationPaint = Paint(Paint.ANTI_ALIAS_FLAG)
         mSaturationPaint!!.style = Paint.Style.STROKE
-        mSaturationPaint!!.strokeWidth =
-            ColorPickerUtils.toPx(context, STROKE_WIDTH_DIP).toFloat()
+        mSaturationPaint!!.strokeWidth = toPx(context, STROKE_WIDTH_DIP).toFloat()
         mCenterPaint = Paint(Paint.ANTI_ALIAS_FLAG)
         mCenterPaint!!.style = Paint.Style.FILL
         mCenterOldPaint = Paint(Paint.ANTI_ALIAS_FLAG)
@@ -307,19 +304,19 @@ class ColorPickerView : View {
         mSaturationPaint!!.shader = saturationShader
         mBrightThumbPaint!!.color = ColorPickerUtils.getHSVColor(mHue, 1f, mBrightRatio)
         mSaturationThumbPaint!!.color = ColorPickerUtils.getHSVColor(mHue, mSaturationRatio, 1f)
-        var r = ColorPickerUtils.toPx(context, mOuterRadiusDip).toFloat()
+        var r = toPx(context, mOuterRadiusDip).toFloat()
         var x = r * cos((mHue * 2 * PI / 360).toDouble())
         var y = -r * sin((mHue * 2 * PI / 360).toDouble())
-        mWheelThumbPoint = ColorPickerUtils.getFixedPoint(x.toFloat(), y.toFloat(), r)
-        r = ColorPickerUtils.toPx(context, mInnerRadiusDip).toFloat()
+        mWheelThumbPoint = getFixedPoint(x.toFloat(), y.toFloat(), r)
+        r = toPx(context, mInnerRadiusDip).toFloat()
         var arg = ((mSaturationRatio + 0.25) * 2 * PI / 3).toFloat()
         x = r * cos(arg.toDouble())
         y = -r * sin(arg.toDouble())
-        mSaturationThumbPoint = ColorPickerUtils.getFixedPoint(x.toFloat(), y.toFloat(), r)
+        mSaturationThumbPoint = getFixedPoint(x.toFloat(), y.toFloat(), r)
         arg = ((mBrightRatio + 0.25) * 2 * PI / 3).toFloat()
         x = r * cos(arg.toDouble())
         y = r * sin(arg.toDouble())
-        mBrightThumbPoint = ColorPickerUtils.getFixedPoint(x.toFloat(), y.toFloat(), r)
+        mBrightThumbPoint = getFixedPoint(x.toFloat(), y.toFloat(), r)
         val backgroundColor = ColorPickerUtils.getHSVColor((hue + 180) % 360, 0.05f, 0.95f)
         mBackgroundColors = intArrayOf(
             backgroundColor, backgroundColor, -0x1
@@ -330,14 +327,14 @@ class ColorPickerView : View {
     }
 
     private fun redrawByTrackingWheel(x: Float, y: Float) {
-        var r = ColorPickerUtils.toPx(context, mOuterRadiusDip).toFloat()
-        mWheelThumbPoint = ColorPickerUtils.getFixedPoint(x, y, r)
+        var r = toPx(context, mOuterRadiusDip).toFloat()
+        mWheelThumbPoint = getFixedPoint(x, y, r)
         val angle = atan2(y.toDouble(), x.toDouble()).toFloat()
         var unit = angle / (2 * PI)
         if (unit < 0) {
             unit += 1f
         }
-        val wheelColor = ColorPickerUtils.interpretColor(WHEEL_COLORS, unit)
+        val wheelColor = interpretColor(WHEEL_COLORS, unit)
         mWheelThumbPaint!!.color = wheelColor
         mHue = ColorPickerUtils.getHue(wheelColor)
         val currentColor = ColorPickerUtils.getHSVColor(mHue, mSaturationRatio, mBrightRatio)
@@ -354,7 +351,7 @@ class ColorPickerView : View {
         mBrightPaint!!.shader = brightShader
         val saturationShader: Shader = SweepGradient(0f, 0f, mSaturationColors, SATURATION_POS)
         mSaturationPaint!!.shader = saturationShader
-        r = ColorPickerUtils.toPx(context, mInnerRadiusDip).toFloat()
+        r = toPx(context, mInnerRadiusDip).toFloat()
         val backgroundColor = ColorPickerUtils.getHSVColor((mHue + 180) % 360, 0.05f, 0.95f)
         mBackgroundColors = intArrayOf(
             backgroundColor, backgroundColor, -0x1
@@ -373,8 +370,8 @@ class ColorPickerView : View {
     }
 
     private fun redrawByTrackingSaturation(x: Float, y: Float) {
-        val r = ColorPickerUtils.toPx(context, mInnerRadiusDip).toFloat()
-        val tempThumbPoint = ColorPickerUtils.getFixedPoint(x, y, r)
+        val r = toPx(context, mInnerRadiusDip).toFloat()
+        val tempThumbPoint = getFixedPoint(x, y, r)
         if (tempThumbPoint.y > 0) {
             return
         }
@@ -401,8 +398,8 @@ class ColorPickerView : View {
     }
 
     private fun redrawByTrackingBright(x: Float, y: Float) {
-        val r = ColorPickerUtils.toPx(context, mInnerRadiusDip).toFloat()
-        val tempThumbPoint = ColorPickerUtils.getFixedPoint(x, y, r)
+        val r = toPx(context, mInnerRadiusDip).toFloat()
+        val tempThumbPoint = getFixedPoint(x, y, r)
         if (tempThumbPoint.y < 0) {
             return
         }
@@ -447,5 +444,49 @@ class ColorPickerView : View {
         private val BRIGHT_POS = floatArrayOf(0.08333f, 0.41667f, 1f)
         private val SATURATION_POS = floatArrayOf(0.58333f, 0.91667f, 1f)
         private val BACKGROUND_POS = floatArrayOf(0.0f, 0.5f, 1f)
+
+        private fun interpretColor(colors: IntArray, unit: Float): Int {
+            if (unit <= 0) {
+                return colors[0]
+            }
+            if (unit >= 1) {
+                return colors[colors.size - 1]
+            }
+            var p = unit * (colors.size - 1)
+            val i = p.toInt()
+            p -= i.toFloat()
+            val c0 = colors[i]
+            val c1 = colors[i + 1]
+            val a = ave(Color.alpha(c0), Color.alpha(c1), p)
+            val r = ave(Color.red(c0), Color.red(c1), p)
+            val g = ave(Color.green(c0), Color.green(c1), p)
+            val b = ave(Color.blue(c0), Color.blue(c1), p)
+            return Color.argb(a, r, g, b)
+        }
+
+        private fun ave(s: Int, d: Int, p: Float): Int {
+            return s + (p * (d - s)).roundToInt()
+        }
+
+        private fun getFixedPoint(x: Float, y: Float, radius: Float): FloatPoint {
+            val temp = radius.toDouble().pow(2.0) / (1 + (y / x).toDouble().pow(2.0))
+            val fixedX = sqrt(temp).toFloat()
+            val fixedY = sqrt(radius.toDouble().pow(2.0) - fixedX.toDouble().pow(2.0))
+                .toFloat()
+            return if (x >= 0 && y >= 0) {
+                FloatPoint(fixedX, fixedY)
+            } else if (x >= 0 && y < 0) {
+                FloatPoint(fixedX, -fixedY)
+            } else if (x < 0 && y >= 0) {
+                FloatPoint(-fixedX, fixedY)
+            } else {
+                FloatPoint(-fixedX, -fixedY)
+            }
+        }
+
+        private fun toPx(context: Context, dip: Int): Int {
+            val metrics = context.resources.displayMetrics
+            return (metrics.density * dip + 0.5).toInt()
+        }
     }
 }
