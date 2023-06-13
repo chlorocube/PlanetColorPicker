@@ -1,0 +1,116 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "jp.co.chlorocube",
+    "module": "planetcolorpicker",
+    "version": "1.0.6",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.5"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.8.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "planetcolorpicker-1.0.6.aar",
+          "url": "planetcolorpicker-1.0.6.aar",
+          "size": 14442,
+          "sha512": "61aa81cbe7f0f2cc489cafad6dd3b8c4ea6d27b8c494b6e4c4e7ea986aef4151357a7e6f61c05b46f2cb70fc66d96c08f813066c9968b2a0941d4215677d1ced",
+          "sha256": "4c18f8bbbae6d91dfe3dee503656b6830c4cbf24d1075e02c7dbec3bcdd27bb0",
+          "sha1": "ace4a7823d362e5e3d819d0febbf8b14d6129d0f",
+          "md5": "d5cdd27320155ddcb4131d72a298dc1b"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.8.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "planetcolorpicker-1.0.6.aar",
+          "url": "planetcolorpicker-1.0.6.aar",
+          "size": 14442,
+          "sha512": "61aa81cbe7f0f2cc489cafad6dd3b8c4ea6d27b8c494b6e4c4e7ea986aef4151357a7e6f61c05b46f2cb70fc66d96c08f813066c9968b2a0941d4215677d1ced",
+          "sha256": "4c18f8bbbae6d91dfe3dee503656b6830c4cbf24d1075e02c7dbec3bcdd27bb0",
+          "sha1": "ace4a7823d362e5e3d819d0febbf8b14d6129d0f",
+          "md5": "d5cdd27320155ddcb4131d72a298dc1b"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseSourcePublication",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "planetcolorpicker-1.0.6-sources.jar",
+          "url": "planetcolorpicker-1.0.6-sources.jar",
+          "size": 5491,
+          "sha512": "efed703295557ac7300820acf76b10d97fd6a9b9edaf5deb548cc903abfbb5c91e5df82b6bee0e09ce752362530f85687c0c9d64784ffdd333ef713210a4d0aa",
+          "sha256": "8d203f8713fc68e7b68d49500540b54dfa2916a56ea9d27f3287117ef65fefed",
+          "sha1": "210c7122bca75dce61df1b1bb6e1a097baa5b7fb",
+          "md5": "72839fd16acaef7583fc6711d1573cff"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseJavaDocPublication",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "planetcolorpicker-1.0.6-javadoc.jar",
+          "url": "planetcolorpicker-1.0.6-javadoc.jar",
+          "size": 330450,
+          "sha512": "161b15496a1e51a2eb454410e45ad626131a5b8ca8498191acdec925685a90a53b3b1d00e4b719aa633b2e9cb55edce1aecd28c3a739211d364c5f7a20ce5342",
+          "sha256": "174300e92b321e85e9dfeee38dbefbe052e280919bc25a6963c02ada1d12fbb4",
+          "sha1": "5e58476a650200a052e8d8e03c57e74347052822",
+          "md5": "2269b2e0240316f5107afa4e3f56e2ee"
+        }
+      ]
+    }
+  ]
+}
