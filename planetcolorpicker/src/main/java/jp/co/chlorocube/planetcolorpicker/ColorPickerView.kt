@@ -334,7 +334,7 @@ class ColorPickerView : View {
         if (unit < 0) {
             unit += 1f
         }
-        val wheelColor = interpretColor(WHEEL_COLORS, unit)
+        val wheelColor = interpretColor(WHEEL_COLORS, unit.toFloat())
         mWheelThumbPaint!!.color = wheelColor
         mHue = ColorPickerUtils.getHue(wheelColor)
         val currentColor = ColorPickerUtils.getHSVColor(mHue, mSaturationRatio, mBrightRatio)
@@ -429,7 +429,6 @@ class ColorPickerView : View {
         private const val DEFAULT_HUE = 0
         private const val DEFAULT_SATURATION = 0
         private const val DEFAULT_BRIGHT = 1
-        private const val PI = 3.1415926f
         private const val STROKE_WIDTH_DIP = 3
         private const val OUTER_RADIUS_DIP = 90
         private const val INNER_RADIUS_DIP = OUTER_RADIUS_DIP - 30
