@@ -9,8 +9,8 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 34
-        versionCode 7
-        versionName "1.0.8"
+        versionCode 9
+        versionName "1.0.9"
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -34,6 +34,7 @@ android {
             withJavadocJar()
         }
     }
+    namespace 'jp.co.chlorocube.planetcolorpicker'
 }
 
 def repo = new File(rootDir, "repository")
@@ -48,7 +49,7 @@ afterEvaluate {
         publications {
             release(MavenPublication) {
                 from components.release
-                version = '1.0.8'
+                version = '1.0.9'
                 groupId = 'jp.co.chlorocube'
                 artifactId = 'planetcolorpicker'
             }

@@ -1,1 +1,21 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+def repo = new File(rootDir, "repository")
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            name = "planetcolorpicker"
+            url = uri("file://${repo.absolutePath}")
+        }
+    }
+}
+rootProject.name = "PlanetColorPicker"
 include ':app', ':planetcolorpicker'
