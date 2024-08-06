@@ -232,7 +232,7 @@ class ColorPickerView : View {
     fun updatePicker(color: Int) {
         if (currentColor == color) {
             val hsv = ColorPickerUtils.get(color)
-            updatePicker(currentHsv[0], hsv[1], hsv[2])
+            updatePicker(currentHsv[0], currentHsv[1], currentHsv[2])
         } else {
             val hsv = ColorPickerUtils.get(color)
             updatePicker(hsv[0], hsv[1], hsv[2])
