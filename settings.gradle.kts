@@ -5,7 +5,7 @@ pluginManagement {
         mavenCentral()
     }
 }
-def repo = new File(rootDir, "repository")
+val repo = File(rootDir, "repository")
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -18,4 +18,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "PlanetColorPicker"
-include ':app', ':planetcolorpicker'
+include(":app", ":planetcolorpicker")

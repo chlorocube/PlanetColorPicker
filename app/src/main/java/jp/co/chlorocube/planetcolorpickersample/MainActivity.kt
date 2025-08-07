@@ -82,7 +82,11 @@ class MainActivity : AppCompatActivity() {
             override fun onStopTrack() {
                 scrollView.enableScroll()
             }
-        }, false, false, 120)
+        },
+            needsComplementaryColorBackgroundDraw = false,
+            needsOldColorDraw = false,
+            outerRadiusDip = 120
+        )
         val currentColor = view.currentColor
         textView.text = getColorCode(currentColor)
     }

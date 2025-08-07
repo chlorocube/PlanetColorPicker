@@ -9,13 +9,13 @@ def date = new Date()
 def VERSION_CODE = Integer.parseInt("19" + new SimpleDateFormat("yyyyMMddHH").format(date).substring(2))
 
 android {
-    compileSdk 34
+    compileSdk 36
     defaultConfig {
         applicationId "jp.co.chlorocube.planetcolorpickersample"
         minSdkVersion 21
-        targetSdkVersion 34
+        targetSdkVersion 36
         versionCode VERSION_CODE
-        versionName "1.0.10"
+        versionName "1.0.11"
         archivesBaseName = "PlanetColorPicker_v${versionName}_${versionCode}"
     }
     buildTypes {
@@ -28,11 +28,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '21'
     }
     namespace 'jp.co.chlorocube.planetcolorpickersample'
 
@@ -49,8 +49,8 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.7.1'
     implementation 'androidx.preference:preference-ktx:1.2.1'
     implementation project(":planetcolorpicker")
-    implementation 'androidx.core:core-ktx:1.13.1'
+    implementation 'androidx.core:core-ktx:1.16.0'
 }
