@@ -2,6 +2,7 @@ package jp.co.chlorocube.planetcolorpickersample
 
 import android.content.Context
 import androidx.preference.PreferenceManager
+import androidx.core.content.edit
 
 internal object MainPreferenceManager {
     private const val KEY_HUE = "HUE"
@@ -10,11 +11,11 @@ internal object MainPreferenceManager {
     fun setColor(context: Context?, color: FloatArray) {
         if (context == null) return
         val sp = PreferenceManager.getDefaultSharedPreferences(context)
-        val editor = sp.edit()
-        editor.putFloat(KEY_HUE, color[0])
-        editor.putFloat(KEY_SATURATION, color[1])
-        editor.putFloat(KEY_BRIGHT, color[2])
-        editor.apply()
+        sp.edit {
+            putFloat(KEY_HUE, color[0])
+            putFloat(KEY_SATURATION, color[1])
+            putFloat(KEY_BRIGHT, color[2])
+        }
     }
 
     fun getColor(context: Context?): FloatArray? {

@@ -1,56 +1,55 @@
 import java.text.SimpleDateFormat
 
 plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
+    id("com.android.application")
 }
 
 def date = new Date()
 def VERSION_CODE = Integer.parseInt("19" + new SimpleDateFormat("yyyyMMddHH").format(date).substring(2))
+def VERSION_NAME = "1.0.12"
 
 android {
-    compileSdk 36
+    namespace = 'jp.co.chlorocube.planetcolorpickersample'
+    compileSdk = 37
     defaultConfig {
-        applicationId "jp.co.chlorocube.planetcolorpickersample"
-        minSdkVersion 21
-        targetSdkVersion 36
-        versionCode VERSION_CODE
-        versionName "1.0.11"
-        archivesBaseName = "PlanetColorPicker_v${versionName}_${versionCode}"
+        applicationId = "jp.co.chlorocube.planetcolorpickersample"
+        minSdk = 23
+        targetSdk = 37
+        versionCode = VERSION_CODE
+        versionName = VERSION_NAME
     }
     buildTypes {
         release {
-            debuggable false
-            zipAlignEnabled true
-            shrinkResources true
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            shrinkResources = true
+            minifyEnabled = true
+            proguardFiles(
+                    getDefaultProguardFile("proguard-android-optimize.txt"),
+                    "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_21
-        targetCompatibility JavaVersion.VERSION_21
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
-    kotlinOptions {
-        jvmTarget = '21'
-    }
-    namespace 'jp.co.chlorocube.planetcolorpickersample'
-
-    applicationVariants.configureEach { variant ->
-        if (variant.buildType.name == "release") {
-            variant.outputs.configureEach {
-                def versionName = variant.versionName
-                def versionCode = variant.versionCode
+    androidComponents {
+        onVariants(selector().withBuildType("release")) { variant ->
+            variant.outputs.each { output ->
+                def versionName = android.defaultConfig.versionName
+                def versionCode = android.defaultConfig.versionCode
                 def newName = "PlanetColorPicker_v${versionName}_${versionCode}.apk"
-                outputFileName = newName
+                output.outputFileName.set(newName)
             }
         }
+    }
+    base {
+        archivesName = "PlanetColorPicker_v${VERSION_NAME}_${VERSION_CODE}"
     }
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'androidx.appcompat:appcompat:1.8.0'
     implementation 'androidx.preference:preference-ktx:1.2.1'
     implementation project(":planetcolorpicker")
-    implementation 'androidx.core:core-ktx:1.16.0'
+    implementation 'androidx.core:core-ktx:1.19.0'
 }

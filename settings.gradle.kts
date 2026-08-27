@@ -5,7 +5,6 @@ pluginManagement {
         mavenCentral()
     }
 }
-val repo = File(rootDir, "repository")
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -13,7 +12,7 @@ dependencyResolutionManagement {
         mavenCentral()
         maven {
             name = "planetcolorpicker"
-            url = uri("file://${repo.absolutePath}")
+            url = uri(file("${rootDir}/repository"))
         }
     }
 }

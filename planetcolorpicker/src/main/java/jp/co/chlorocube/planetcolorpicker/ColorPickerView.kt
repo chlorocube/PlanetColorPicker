@@ -138,6 +138,7 @@ class ColorPickerView : View {
                 }
                 mTrackListener?.onStartTrack()
             }
+
             MotionEvent.ACTION_MOVE -> if (mIsTrackingWheel) {
                 redrawByTrackingWheel(x, y)
             } else if (mIsTrackingBright) {
@@ -145,6 +146,7 @@ class ColorPickerView : View {
             } else if (mIsTrackingSaturation) {
                 redrawByTrackingSaturation(x, y)
             }
+
             MotionEvent.ACTION_UP -> {
                 mIsTrackingWheel = false
                 mIsTrackingBright = false
@@ -152,6 +154,7 @@ class ColorPickerView : View {
 
                 mTrackListener?.onStopTrack()
             }
+
             else -> {
                 mTrackListener?.onStopTrack()
             }
@@ -319,8 +322,8 @@ class ColorPickerView : View {
         mBrightThumbPaint!!.color = ColorPickerUtils.getHSVColor(mHue, 1f, mBrightRatio)
         mSaturationThumbPaint!!.color = ColorPickerUtils.getHSVColor(mHue, mSaturationRatio, 1f)
         var r = toPx(context, mOuterRadiusDip).toFloat()
-        var x = r * cos((mHue * 2 * PI / 360).toDouble())
-        var y = -r * sin((mHue * 2 * PI / 360).toDouble())
+        var x = r * cos((mHue * 2 * PI / 360))
+        var y = -r * sin((mHue * 2 * PI / 360))
         mWheelThumbPoint = getFixedPoint(x.toFloat(), y.toFloat(), r)
         r = toPx(context, mInnerRadiusDip).toFloat()
         var arg = ((mSaturationRatio + 0.25) * 2 * PI / 3).toFloat()
@@ -389,11 +392,11 @@ class ColorPickerView : View {
         if (tempThumbPoint.y > 0) {
             return
         }
-        if (tempThumbPoint.y > -r * sin((PI / 6).toDouble()) * 7 / 8) {
-            tempThumbPoint.y = (-r * sin((PI / 6).toDouble())).toFloat()
+        if (tempThumbPoint.y > -r * sin((PI / 6)) * 7 / 8) {
+            tempThumbPoint.y = (-r * sin((PI / 6))).toFloat()
             if (x > 0) tempThumbPoint.x =
-                (r * cos((PI / 6).toDouble())).toFloat() else tempThumbPoint.x =
-                (-r * cos((PI / 6).toDouble())).toFloat()
+                (r * cos((PI / 6))).toFloat() else tempThumbPoint.x =
+                (-r * cos((PI / 6))).toFloat()
         }
         mSaturationThumbPoint = tempThumbPoint
         val arg = acos((mSaturationThumbPoint!!.x / r).toDouble())
@@ -417,11 +420,11 @@ class ColorPickerView : View {
         if (tempThumbPoint.y < 0) {
             return
         }
-        if (tempThumbPoint.y < r * sin((PI / 6).toDouble()) * 7 / 8) {
-            tempThumbPoint.y = (r * sin((PI / 6).toDouble())).toFloat()
+        if (tempThumbPoint.y < r * sin((PI / 6)) * 7 / 8) {
+            tempThumbPoint.y = (r * sin((PI / 6))).toFloat()
             if (x > 0) tempThumbPoint.x =
-                (r * cos((PI / 6).toDouble())).toFloat() else tempThumbPoint.x =
-                (-r * cos((PI / 6).toDouble())).toFloat()
+                (r * cos((PI / 6))).toFloat() else tempThumbPoint.x =
+                (-r * cos((PI / 6))).toFloat()
         }
         mBrightThumbPoint = tempThumbPoint
         val arg = acos((mBrightThumbPoint!!.x / r).toDouble())
